@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --button-color: hsl(32, 88%, 98%);
+}
+
+body {
+    margin: auto;
+
+    font-family: Lato;
+}
+
+.main-app {
+    display: grid;
+
+    grid-template-rows: 100px 1fr 55px;
+
+    min-height: 100vh;
+}
+
+header {
+    display: grid;
+
+    justify-items: center;
+
+    border-block-end: 2px solid hsl(0, 0%, 85%);
+    background-color: hsl(105, 24%, 77%)
+}
+
+nav {
+    margin-block-start: 0.5em;
+
+    display: grid;
+    grid-auto-flow: column;
+
+    width: fit-content;
+    height: fit-content;
+
+    place-items: center;
+}
+
+nav a,
+.container>div>a,
+.header>div>.btns>a {
+    margin: 0 0.5em;
+    padding: 0.25em 0.5em;
+
+    text-decoration: none;
+    color: hsl(0, 0%, 0%);
+    background-color: var(--button-color);
+
+    font-family: Roboto;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    border: 2px solid hsl(0, 0%, 75%);
+    border-radius: 5px;
+
+    transition: background-color 150ms, border 150ms;
+}
+
+nav a:hover,
+.container>div>a:hover,
+.header>div>.btns>a:hover {
+    border: 2px solid hsl(0, 0%, 50%);
+}
+
+header>h1 {
+    margin: 0.5em;
+    margin-block: 0.25em;
+
+    font-family: Open Sans;
+    font-size: 2em;
+}
+
+main {
+    justify-items: center;
+
+    text-align: center;
+}
+
+.header>div {
+    margin: 0.5em 0;
+    text-align: center;
+
+    display: grid;
+    grid-auto-flow: column;
+
+    place-items: center;
+
+    gap: 1em;
+}
+
+.header>div>button {
+    cursor: pointer;
+}
+
+.header>div>form {
+    display: grid;
+    grid-auto-flow: column;
+
+    gap: 0.25em;
+
+    height: 100%;
+}
+
+.header>div>form>input,
+.header>div>form>button,
+.header>section>button {
+    border-radius: 4px;
+    border: 2px solid hsl(0, 0%, 75%);
+    background-color: var(--button-color);
+
+    transition: border 150ms;
+}
+
+.header>div>form>input {
+    padding: 0 0.5em;
+    background-color: hsl(0, 0%, 100%);
+    outline: none;
+}
+
+.header>div>form>button {
+    cursor: pointer;
+}
+
+.header>section {
+    margin-block-end: 0.25em;
+
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
+
+    place-items: center;
+}
+
+.header>section>a {
+    text-decoration: none;
+    color: black;
+
+    font-size: 1.25em;
+}
+
+.header>section>button {
+    height: 30px;
+
+    background-color: var(--button-color);
+
+    cursor: pointer;
+}
+
+.container>main {
+    display: grid;
+
+    grid-template-rows: max-content max-content max-content 1fr 0.25fr;
+
+    width: 100%;
+    height: 100%;
+}
+
+.info-actions {
+    margin: 1em;
+
+    display: grid;
+    align-self: center;
+
+    justify-items: center;
+    gap: 0.5em;
+
+    width: 75%;
+}
+
+.info-actions>h3 {
+    margin: 0.5em;
+    font-family: Roboto;
+
+    font-size: 1.5em;
+}
+
+.info-actions>form>fieldset {
+    padding: 0.25em 0.5em;
+
+    display: grid;
+    place-items: center;
+    grid-auto-flow: column;
+
+    width: 100%;
+
+    border-radius: 5px;
+}
+
+.info-actions>form>fieldset>input {
+    /* width: 50%; */
+    height: 25px;
+
+    border-radius: 3px;
+
+    outline: none;
+    border: 2px solid hsl(0, 0%, 75%);
+}
+
+.info-actions>form>fieldset>label {
+    height: fit-content;
+}
+
+.info-actions>form>fieldset>input[type="range"] {
+    cursor: pointer;
+}
+
+.info-actions>button {
+    padding: 0.25em 0.5em;
+
+    border-radius: 4px;
+    border: 2px solid hsl(0, 0%, 75%);
+    background-color: var(--button-color);
+
+    cursor: pointer;
+
+    transition: border 200ms;
+}
+
+.info-actions>button:hover,
+.header>div>form>button:hover,
+.header>section>button:hover {
+    border: 2px solid hsl(0, 0%, 50%);
+}
+
+.bug-list-counter {
+    display: grid;
+    grid-auto-flow: column;
+
+    font-size: 1.5em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+
+    height: fit-content;
+}
+
+.bug-list-counter>div {
+    padding: 0.5em 0.5em;
+    margin-inline-end: 1em;
+
+    place-self: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 0.25em;
+
+    height: fit-content;
+
+    background-color: hsl(0, 0%, 93%);
+    border-radius: 100px;
+    border: 1px solid hsl(0, 0%, 100%);
+
+    font-size: 0.6em;
+
+    transition: border 200ms;
+
+    cursor: pointer;
+}
+
+.bug-list-counter>div:hover {
+    border: 1px solid hsl(0, 0%, 35%);
+}
+
+.pagination {
+    margin-block: 0.5em;
+
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+
+    font-size: 1.15em;
+}
+
+.pagination>span {
+    margin-inline-end: 1em;
+
+    justify-self: start;
+
+    width: 100px;
+}
+
+.pagination>i {
+    padding: 0.5em;
+
+    width: 20px;
+
+    text-align: center;
+    border-radius: 9999px;
+    justify-self: end;
+
+    cursor: pointer;
+
+    transition: background-color 200ms;
+}
+
+.pagination>i:hover {
+    background-color: hsl(0, 0%, 93%);
+}
+
+.pagination>i.faint,
+.pagination>i:hover.faint {
+    cursor: auto;
+    color: hsl(0, 0%, 75%);
+    background-color: white;
+    pointer-events: none;
+}
+
+.user-msg {
+    color: white;
+    padding: 10px;
+    font-size: 1.4em;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background-color: grey;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.user-msg button {
+    float: right;
+    border: 0;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.success {
+    background-color: rgb(41, 189, 73);
+}
+
+.error {
+    background-color: rgb(216, 59, 59);
+}
+
+
+.bug-list {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+    margin-block-end: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+}
+
+.bug-preview {
+    margin: 0.25em;
+    padding: 0.25em;
+
+    background-color: hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 100%);
+    border: 3px solid hsl(0, 0%, 50%);
+
+    border-radius: 5px;
+    text-align: center;
+}
+
+.bug-preview>article {
+    display: grid;
+
+    grid-template-rows: 60px 60px 50px;
+
+    place-items: center;
+}
+
+.bug-preview>article>h4,
+.bug-preview>article>p {
+    margin: 0 0.25em;
+
+    height: fit-content;
+
+    font-size: 1.15em;
+}
+
+.bug-preview>article>h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.bug-preview span {
+    color: gold;
+}
+
+
+.bug-preview>div {
+    justify-self: center;
+
+    margin-block-end: 0.5em;
+
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.5em;
+
+    width: fit-content;
+
+    justify-items: center;
+}
+
+.bug-preview>div>button {
+    padding: 0.15em 0.35em;
+
+    border-radius: 5px;
+    border: 3px solid hsl(0, 0%, 20%);
+    background-color: var(--button-color);
+
+    font-family: Roboto;
+    font-size: 1.1em;
+
+    cursor: pointer;
+
+    transition: background-color 200ms, border 200ms;
+}
+
+.bug-preview>div>button:hover {
+    background-color: hsl(0, 0%, 100%);
+    border: 3px solid hsl(0, 0%, 0%);
+}
+
+.pdf-button {
+    align-self: end;
+
+    margin-block-end: 1em;
+
+    padding: 0.25em 0.5em;
+
+    border-radius: 4px;
+    border: 2px solid hsl(0, 0%, 75%);
+    background-color: var(--button-color);
+
+    cursor: pointer;
+
+    transition: border 200ms;
+}
+
+.pdf-button:hover {
+    border: 2px solid hsl(0, 0%, 50%);
+}
+
+.container>div {
+    margin: 1em;
+    padding: 1em;
+
+    display: grid;
+    min-width: 50%;
+
+    border: 2px solid hsl(0, 0%, 92%);
+    border-radius: 8px;
+}
+
+.container>div>h3,
+.container>div>h4,
+.container>div>h5,
+.container>div>h6 {
+    margin-block-end: 0;
+}
+
+.container>div>h3 {
+    margin-block-start: 0;
+
+    font-size: 1.5em;
+    font-family: Roboto;
+}
+
+.container>div>h4 {
+    font-size: 1.25em;
+    text-decoration: underline;
+}
+
+.container>div>h5 {
+    font-size: 1.1em;
+    font-family: Noto Sans;
+    font-weight: 400;
+}
+
+.container>div>h6 {
+    margin-block-start: 1em;
+
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.container>div>a {
+    margin-block-start: 2em;
+
+    justify-self: center;
+
+    width: 100px;
+}
+
+.user-details>h2 {
+    margin: 0.35em;
+    font-size: 1.75em;
+    font-family: Open Sans;
+}
+
+.user-details>h3:not(:first-of-type) {
+    margin-block-end: 1em;
+}
+
+.user-list {
+    margin-block-start: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+}
+
+.user-list>div {
+    padding: 0 1.75em;
+
+    border: 2px solid hsl(0, 0%, 90%);
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 98%);
+
+    font-size: 1.25em;
+
+    transition: background-color 150ms;
+}
+
+.user-list>div:hover {
+    background-color: hsl(0, 0%, 100%);
+}
+
+.user-list>div>button {
+    padding: 0.25em 0.5em;
+    margin-block-end: 0.5em;
+
+    background-color: var(--button-color);
+    border: 2px solid hsl(0, 0%, 75%);
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: background-color 150ms;
+}
+
+.user-list>div>button:hover {
+    background-color: hsl(0, 0%, 100%);
+}
+
+footer {
+    padding-block-start: 0.1em;
+
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 0.5em;
+
+    background-color: hsl(105, 24%, 77%);
+    border-block-start: 2px solid hsl(0, 0%, 85%);
+}
+
+footer>p:first-of-type {
+    justify-self: end;
+
+    margin: 0;
+
+    font-size: 1.25em;
+}
+
+footer>p:nth-of-type(2) {
+    justify-self: start;
+}
