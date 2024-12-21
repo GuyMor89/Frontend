@@ -1,0 +1,60 @@
+@use '../basics/functions' as *;
+
+.toy-list {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.toy-preview {
+    margin: 0.25em;
+    padding: 0.25em;
+
+    background-color: hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 100%);
+    border: 3px solid hsl(0, 0%, 50%);
+
+    border-radius: 5px;
+    text-align: center;
+
+    >h4,
+    >p {
+        margin: 0 0.25em;
+
+        height: fit-content;
+
+        font-size: em(22px);
+    }
+
+    >p {
+        font-size: em(18px);
+    }
+
+    >img {
+        height: 90%;
+    }
+
+    span {
+        color: gold;
+    }
+
+    >.preview-buttons {
+        margin-block-end: 0.5em;
+
+        width: fit-content;
+
+        >button {
+            border: 3px solid hsl(0, 0%, 70%);
+
+            &:hover {
+                border: 3px solid white;
+            }
+
+            >i {
+                font-size: em(20px);
+
+            }
+        }
+    }
+}

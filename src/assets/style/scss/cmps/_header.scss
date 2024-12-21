@@ -1,0 +1,76 @@
+@use '../basics/mixins' as *;
+
+header {
+    border-block-end: 2px solid hsl(0, 0%, 85%);
+    background-color: hsl(105, 24%, 77%);
+
+    >h1 {
+        margin: 0.5em;
+        margin-block: 0.25em;
+    
+        font-family: Open Sans;
+        font-size: 2em;
+    }
+
+    >div {
+        margin: 0.5em 0;
+        text-align: center;
+
+        >.btns>a {
+            @include aStyle()
+        }
+
+        >form {
+            height: 100%;
+
+            >input {
+                padding: 0.35em 0.5em;
+                background-color: hsl(0, 0%, 100%);
+                border-radius: 3px;
+                border: 2px solid hsl(0, 0%, 60%);
+
+                font-family: Roboto;
+                font-weight: 500;
+
+                outline: none;
+            }
+
+            button {
+                margin-inline-start: 0.5em;
+                margin-inline-end: 1em;
+            }
+        }
+    }
+
+    >.logged-in {
+        margin-block-end: 0.25em;
+
+        >a {
+            text-decoration: none;
+            color: black;
+        
+            font-size: 1.25em;
+        }
+
+        >button {
+            height: 30px;
+        }
+    }
+}
+
+nav {
+    margin-block-start: 0.5em;
+
+    width: fit-content;
+    height: fit-content;
+
+    a {
+        @include aStyle()
+    }
+}
+
+
+main {
+    text-align: center;
+}
+

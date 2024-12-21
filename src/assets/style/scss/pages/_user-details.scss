@@ -1,0 +1,42 @@
+.user-details {
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid hsl(0, 0%, 90%);
+    border-radius: 10px;
+
+    >h2 {
+        margin: 0.35em;
+        font-size: 1.75em;
+        font-family: Open Sans;
+    }
+
+    >h3 {
+        margin: 0.5em;
+
+        &:not(:first-of-type) {
+            margin-block-end: 1em;
+        }
+    }
+}
+
+.user-list {
+    margin-block-start: 1em;
+
+    /* width: 75%; */
+
+    >div {
+        padding: 0.5em 2em;
+    
+        border: 2px solid hsl(0, 0%, 90%);
+        border-radius: 5px;
+        background-color: hsl(0, 0%, 98%);
+    
+        font-size: 1.25em;
+    
+        transition: background-color 150ms;
+
+        &:hover {
+            background-color: hsl(0, 0%, 100%);
+        }
+    }
+}

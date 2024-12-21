@@ -1,0 +1,65 @@
+.toy-details {
+    margin: 1em;
+    padding: 1em;
+
+    min-width: 50%;
+
+    border: 2px solid hsl(0, 0%, 92%);
+    border-radius: 8px;
+}
+
+.toy-details>h3,
+.toy-details>h4,
+.toy-details>h5,
+.toy-details>h6 {
+    margin: 0;
+}
+
+.toy-details>h3 {
+    margin-block-start: 0;
+
+    font-size: 1.5em;
+    font-family: Roboto;
+}
+
+.toy-details>img {
+    height: 100px;
+
+    margin: 1em;
+}
+
+.toy-details>h4 {
+    margin-block-end: 0.5em;
+
+    font-size: 1.25em;
+    text-decoration: underline;
+}
+
+.toy-details>h5 {
+    font-size: 1.1em;
+    font-family: Noto Sans;
+    font-weight: 400;
+}
+
+.toy-details>h6 {
+    margin-block-end: 1em;
+
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.toy-details>a {
+    margin-block-start: 2em;
+
+    width: 100px;
+}
+
+.toy-msg {
+    margin-block-end: 0.25em;
+
+    width: 75%;
+}
+
+.toy-msg>button {
+    width: 30px;
+}

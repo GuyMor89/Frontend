@@ -1,0 +1,103 @@
+header {
+    border-block-end: 2px solid hsl(0, 0%, 85%);
+    background-color: hsl(105, 24%, 77%)
+}
+
+nav {
+    margin-block-start: 0.5em;
+
+    width: fit-content;
+    height: fit-content;
+}
+
+nav a,
+.toy-details>a,
+.header>div>.btns>a {
+    margin: 0 0.5em;
+    padding: 0.25em 0.5em;
+
+    text-decoration: none;
+    color: hsl(0, 0%, 0%);
+    background-color: var(--button-color);
+
+    font-family: Roboto;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    border: 2px solid hsl(0, 0%, 75%);
+    border-radius: 5px;
+
+    transition: background-color 150ms, border 150ms;
+}
+
+nav a:hover,
+.toy-details>a:hover,
+.header>div>.btns>a:hover {
+    border: 2px solid hsl(0, 0%, 50%);
+}
+
+header>h1 {
+    margin: 0.5em;
+    margin-block: 0.25em;
+
+    font-family: Open Sans;
+    font-size: 2em;
+}
+
+main {
+    text-align: center;
+}
+
+.header>div {
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+.header>div>button {
+    cursor: pointer;
+}
+
+.header>div>form {
+    height: 100%;
+}
+
+.header>div>form>input,
+.header>div>form>button,
+.header>section>button {
+    border-radius: 4px;
+    border: 2px solid hsl(0, 0%, 75%);
+    background-color: var(--button-color);
+
+    height: 27px;
+
+    transition: border 150ms;
+}
+
+.header>div>form>input {
+    padding: 0 0.5em;
+    background-color: hsl(0, 0%, 100%);
+    outline: none;
+}
+
+.header>div>form>button {
+    cursor: pointer;
+}
+
+.header>section {
+    margin-block-end: 0.25em;
+}
+
+.header>section>a {
+    text-decoration: none;
+    color: black;
+
+    font-size: 1.25em;
+}
+
+.header>section>button {
+    height: 30px;
+
+    background-color: var(--button-color);
+
+    cursor: pointer;
+}

@@ -17,22 +17,25 @@ export function UserList() {
     }
 
     function deleteUser(userID) {
-        userActions.removeUser(userID)
-            .then(() => showSuccessMsg('User deleted'))
-            .catch(() => showErrorMsg('Cannot delete user with bugs'))
-}
+        try {
+            userActions.removeUser(userID)
+            showSuccessMsg('User deleted')
+        } catch {
+            showErrorMsg('Cannot delete user with toys')
+        }
+    }
 
-if (!users) return <div>Loading..</div>
+    if (!users) return <div>Loading..</div>
 
-return (
-    <section className='user-list'>
-        {users.map(user => {
-            return <div>
-                <h3>{user.fullname}</h3>
-                <h4>{user._id}</h4>
-                <button onClick={() => deleteUser(user._id)}>Delete</button>
-            </div>
-        })}
-    </section>
-)
+    return (
+        <section className='user-list'>
+            {users.map(user => {
+                return <div key={user._id}>
+                    <h3>{user.fullname}</h3>
+                    {/* <h4>{user._id}</h4> */}
+                    <button onClick={() => deleteUser(user._id)}>Delete</button>
+                </div>
+            })}
+        </section>
+    )
 }

@@ -1,0 +1,116 @@
+@use '../basics/mixins' as *;
+@use '../basics/functions' as *;
+
+.toy-details {
+    margin: 1em;
+    padding: 1em;
+
+    min-width: 50%;
+
+    border: 2px solid hsl(0, 0%, 92%);
+    border-radius: 8px;
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+    }
+
+    >h3 {
+        margin-block-start: 0;
+
+        font-size: em(34px);
+        font-family: Roboto;
+    }
+
+    >h4 {
+        margin-block-end: 0.5em;
+    
+        font-size: 1.25em;
+        text-decoration: underline;
+    }
+
+    >h5 {
+        font-size: 1.1em;
+        font-family: Noto Sans;
+        font-weight: 400;
+    }
+
+    >h6 {
+        margin-block-end: 1em;
+    
+        font-size: em(20px);
+        font-style: italic;
+
+        span {
+            color: gold;
+            font-size: em(20px);
+        }
+    }
+
+    >a {
+        margin-block-start: 2em;
+    
+        width: 100px;
+    }
+
+    >img {
+        height: 120px;
+    
+        margin: 1em;
+    }
+
+    a {
+        @include aStyle();
+
+        margin-block-start: 1em;
+
+        width: fit-content;
+    }
+}
+
+.toy-msgs {
+
+    h4 {
+        margin: 0.5em;
+
+        font-size: em(20px);
+        font-family: Open Sans;
+        text-decoration: underline;
+    }
+
+    >button {
+        padding: 0.25em 0.5em;
+
+        height: 30px;
+    }
+
+    .toy-msg {
+        padding: 0.25em 0.5em;
+
+        width: 75%;
+
+        border-radius: 3px;
+
+        h5 {
+            font-size: em(16px);
+            font-family: Lato;
+            font-weight: 400;
+        }
+        
+        button {
+            width: 30px;
+    
+        }
+    }
+
+    .toy-msg:nth-of-type(1n) {
+        background-color: hsl(0, 0%, 90%);
+    }
+
+    .toy-msg:nth-of-type(2n) {
+        background-color: hsl(0, 0%, 100%);
+    }
+}
+

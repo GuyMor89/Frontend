@@ -1,0 +1,208 @@
+.main-app {
+    display: grid;
+
+    grid-template-rows: 100px 1fr 55px;
+}
+
+header {
+    display: grid;
+
+    justify-items: center;
+}
+
+nav {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+}
+
+main {
+    justify-items: center;
+}
+
+.header>div {
+    display: grid;
+    grid-auto-flow: column;
+
+    place-items: center;
+
+    gap: 1em;
+}
+
+.header>div>form {
+    display: grid;
+    grid-auto-flow: column;
+
+    align-items: center;
+
+    gap: 0.25em;
+}
+
+.header>section {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
+
+    place-items: center;
+}
+
+.container>main {
+    display: grid;
+
+    grid-template-rows: max-content max-content max-content 1fr 0.25fr;
+}
+
+.home {
+    display: grid;
+
+    justify-items: center;
+}
+
+.info-actions {
+    display: grid;
+    align-self: center;
+
+    justify-items: center;
+    gap: 0.5em;
+}
+
+.info-actions>fieldset {
+    display: grid;
+    place-items: center;
+    grid-auto-flow: column;
+}
+
+.toy-list-counter {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.toy-list-counter>div {
+    place-self: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 0.25em;
+}
+
+.pagination {
+    margin-block: 0.5em;
+
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+}
+
+.pagination>span {
+    justify-self: start;
+}
+
+.pagination>i {
+    justify-self: end;
+}
+
+.toy-list {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+}
+
+.toy-preview>article {
+    display: grid;
+
+    grid-template-rows: 60px 60px 50px;
+
+    place-items: center;
+}
+
+.toy-preview>div {
+    justify-self: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.5em;
+
+    justify-items: center;
+}
+
+.toy-details {
+    display: grid;
+}
+
+.toy-details>img {
+    justify-self: center;
+}
+
+.toy-details>a {
+    justify-self: center;
+}
+
+.toy-msg {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr;
+
+    justify-self: center;
+}
+
+.user-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+
+    justify-items: center;
+}
+
+.user-list>div {
+    display: grid;
+    gap: 1em;
+
+    place-items: center;
+}
+
+.not-found {
+    display: grid;
+    gap: 1em;
+}
+
+.chart {
+    display: grid;
+    justify-items: center;
+}
+
+.chart-buttons {
+    display: grid;
+    grid-auto-flow: column;
+
+    gap: 0.5em;
+}
+
+.locations {
+    display: grid;
+    justify-items: center;
+
+    gap: 1em;
+}
+
+.locations>.buttons {
+    display: grid;
+    grid-auto-flow: column;
+
+    gap: 1em;
+}
+
+footer {
+    display: grid;
+    grid-auto-flow: column;
+
+    place-items: center;
+    gap: 0.5em;
+}
+
+footer>p:first-of-type {
+    justify-self: end;
+}
+
+footer>p:nth-of-type(2) {
+    justify-self: start;
+}

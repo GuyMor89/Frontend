@@ -1,0 +1,19 @@
+@use 'basics/base';
+@use 'basics/loader';
+@use 'basics/modal';
+@use 'basics/typography';
+@use 'basics/layout';
+@use 'basics/functions';
+
+@use 'pages/about';
+@use 'pages/dashboard';
+@use 'pages/home';
+@use 'pages/not-found';
+@use 'pages/toy-details';
+@use 'pages/toy-index';
+@use 'pages/user-details';
+
+@use 'cmps/footer';
+@use 'cmps/header';
+@use 'cmps/toy-list';
+@use 'cmps/user-msg';

@@ -1,0 +1,15 @@
+.home {
+    margin: 1em;
+}
+
+.home>h2 {
+    margin: 1em;
+}
+
+.home>img {
+    height: 120px;
+}
+
+.home>div {
+    margin: 1em;
+}

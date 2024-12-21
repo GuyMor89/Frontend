@@ -1,0 +1,38 @@
+.about {
+    margin: 1em;
+}
+
+.locations {
+    margin: 1em;
+}
+
+.locations>h3 {
+    font-size: 1.3em;
+}
+
+.locations>.buttons {
+    width: fit-content;
+}
+
+.locations>.buttons>button {
+    width: 105px;
+
+    border-radius: 4px;
+    border: 2px solid hsl(0, 0%, 75%);
+    background-color: var(--button-color);
+
+    font-family: Roboto;
+    font-weight: 500;
+
+    transition: border 150ms;
+}
+
+.locations>.buttons>button:hover {
+    background-color: hsl(0, 0%, 98%);
+    border: 2px solid hsl(0, 0%, 50%);
+}
+
+.map-icon>img {
+    height: 45px;
+    cursor: pointer;
+}

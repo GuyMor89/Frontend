@@ -1,6 +1,6 @@
 import { httpService } from "./http.service.js"
 
-const BASE_URL = 'user/'
+const BASE_URL = 'users/'
 
 export const userService = {
     login,
@@ -14,38 +14,32 @@ export const userService = {
 }
 
 function query() {
-    return httpService.get('/api/user')
-        .then(res => res.data)
+    return httpService.get('users')
 }
 
 function login({ username, password }) {
-    return httpService.post('/api/auth/login', { username, password })
-        .then(res => res.data)
+    return httpService.post('auth/login', { username, password })
 }
 
 function signup({ username, password, fullname }) {
-    return httpService.post('/api/auth/signup', { username, password, fullname })
-        .then(res => res.data)
+    return httpService.post('auth/signup', { username, password, fullname })
 }
 
 function logout() {
-    return httpService.post('/api/auth/logout')
-        .then(res => res.data)
+    return httpService.post('auth/logout')
 }
 
 function getLoggedinUser() {
     // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    return httpService.get('/api/auth/verify')
-        .then(res => res.data)
+    return httpService.get('auth/verify')
 }
 
 function getById(userId) {
     return httpService.get(BASE_URL + userId)
-        .then(res => res.data)
 }
 
 function remove(userId) {
-    return httpService.delete('/api/user/' + userId)
+    return httpService.delete('userS/' + userId)
 }
 
 function getEmptyCredentials() {

@@ -3,7 +3,8 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     loadFromStorage,
-    saveToStorage
+    saveToStorage,
+    debounce
 }
 
 function makeId(length = 6) {
@@ -33,6 +34,16 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
+function debounce(func, wait) {
+    let timeout
+
+    return function executedFunction(...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(()=>{
+            func(...args)
+        }, wait)
+    }
+}
 
 function loadFromStorage(keyDB) {
     const val = localStorage.getItem(keyDB)

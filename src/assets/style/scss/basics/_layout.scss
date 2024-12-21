@@ -1,0 +1,208 @@
+@use '../basics/mixins' as *;
+
+.home {
+    @include grid(row, $justify: center);
+}
+
+.modal-container {
+    @include grid(row, $place: center);
+
+    .modal {
+        @include grid(row, $place: center);
+    }
+}
+
+
+.main-app {
+    @include grid();
+
+    grid-template-rows: 100px 1fr 55px;
+
+    header {
+        @include grid(row, $justify: center);
+
+        nav {
+            @include grid(column, $place: center);
+        }
+
+        >.logged-in {
+            @include grid(column, $place: center);
+
+            gap: 1em;
+        }
+
+        >div {
+            @include grid(column, $place: center);
+
+            >form {
+                @include grid(column, $align: center);
+
+                gap: 0.25em;
+            }
+        }
+    }
+
+    .main-container {
+        @include grid($justify: center);
+
+        grid-template-rows: repeat(4, max-content) 0.25fr;
+
+        .info-actions {
+            @include grid(row, $justify: center);
+            gap: 0.5em;
+
+            >fieldset {
+                @include grid(column, $place: center);
+            }
+        }
+
+        .toy-list-counter {
+            @include grid(column);
+
+            >div {
+                place-self: center;
+
+                @include grid(column, $place: center);
+
+                gap: 0.25em;
+            }
+        }
+
+        .pagination {
+            margin-block: 0.5em;
+
+            @include grid(column, $align: center);
+
+            >span {
+                justify-self: start;
+            }
+
+            >i {
+                justify-self: end;
+            }
+        }
+
+        .toy-list {
+            margin-block-end: 1em;
+
+            @include grid();
+            grid-template-columns: repeat(4, 225px);
+
+            @include for-narrow-layout() {
+                grid-template-columns: repeat(2, 225px);
+            }
+
+            .toy-preview {
+
+                @include grid($place: center);
+
+                grid-template-rows: 60px 100px 50px;
+
+                >.preview-buttons {
+                    justify-self: center;
+
+                    @include grid(column, $justify: center);
+
+                    gap: 0.5em;
+                }
+
+            }
+        }
+    }
+}
+
+.toy-details {
+    @include grid();
+
+    >img {
+        justify-self: center;
+    }
+
+    >a {
+        justify-self: center;
+    }
+}
+
+.toy-msgs {
+    @include grid();
+    
+    >h4 {
+        justify-self: end;
+    }
+
+    >button {
+        grid-column: 2/3;
+
+        justify-self: start;
+        align-self: center;
+    }
+
+    .toy-msg {
+        grid-column: 1/3;
+
+        @include grid(column, $align: center);
+    
+        grid-template-columns: 1fr;
+    
+        justify-self: center;
+    }
+}
+
+
+
+.user-list {
+    @include grid($justify: center);
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+
+    >div {
+        @include grid($place: center);
+
+        gap: 1em;
+    }
+}
+
+.not-found {
+    @include grid();
+    gap: 1em;
+}
+
+
+.chart {
+    @include grid($justify: center);
+
+    .chart-buttons {
+        @include grid(column);
+
+        gap: 0.5em;
+    }
+}
+
+.locations {
+    @include grid($justify: center);
+
+    gap: 1em;
+
+    >.buttons {
+        @include grid(column);
+
+        gap: 1em;
+    }
+}
+
+footer {
+    @include grid(column, $place: center);
+
+    gap: 0.5em;
+
+    >p {
+        &:first-of-type {
+            justify-self: end;
+        }
+
+        &:nth-of-type(2) {
+            justify-self: start;
+        }
+    }
+}

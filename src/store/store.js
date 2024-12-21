@@ -1,16 +1,16 @@
 import { combineReducers, compose, legacy_createStore as createStore } from 'redux'
-import { bugReducer } from "./reducers/bug.reducer.js"
+import { toyReducer } from "./reducers/toy.reducer.js"
 import { userReducer } from "./reducers/user.reducer.js"
 
 const rootReducer = combineReducers({
-    bugModule: bugReducer,
+    toyModule: toyReducer,
     userModule: userReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 export const store = createStore(rootReducer, composeEnhancers())
 
-// * For Debugging
+// * For Detoyging
 window.gStore = store
 
 store.subscribe(() => {

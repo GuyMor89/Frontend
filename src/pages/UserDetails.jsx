@@ -1,32 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { BugList } from '../cmps/BugList.jsx'
+import { ToyList } from '../cmps/ToyList.jsx'
 import { userActions } from '../store/actions/user.actions.js'
-import { bugActions } from '../store/actions/bug.actions.js'
+import { toyActions } from '../store/actions/toy.actions.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
 export function UserDetails() {
 
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
-    const filterBy = useSelector(storeState => storeState.bugModule.filterBy)
-    const [ownedBugs, setOwnedBugs] = useState(null)
+    const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+    const [ownedToys, setOwnedToys] = useState(null)
 
     useEffect(() => {
         userActions.loadLoggedInUser()
     }, [])
 
     useEffect(() => {
-        loadBugs()
+        loadToys()
     }, [user])
 
-    function loadBugs() {
+    async function loadToys() {
         if (!user) return
-        return bugActions.loadBugs(filterBy)
-            .then(result => {
-                setOwnedBugs(result.filter(bug => bug.owner && bug.owner.fullname === user.fullname))
-            })
+        try {
+            const toys = await toyActions.loadToys(filterBy)
+            setOwnedToys(toys.filter(toy => toy.owner && toy.owner.fullname === user.fullname))
+        } catch (err) {
+            showErrorMsg('Couldn\'t load toys')
+        }
     }
-
 
     if (!user) return
 
@@ -37,7 +39,7 @@ export function UserDetails() {
             <h2>Name: {fullname}</h2>
             <h3>ID: {_id}</h3>
             <h3>Is Admin: {isAdmin ? 'Yes' : 'No'}</h3>
-            {ownedBugs && ownedBugs.length > 0 ? <BugList bugs={ownedBugs} user={user} /> : 'You don\'t own any bugs'}
+            {ownedToys && ownedToys.length > 0 ? <ToyList toys={ownedToys} user={user} /> : 'You don\'t own any toys'}
         </div>
     )
 }

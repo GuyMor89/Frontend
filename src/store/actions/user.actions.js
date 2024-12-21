@@ -12,74 +12,71 @@ export const userActions = {
     removeUser
 }
 
-function loadLoggedInUser() {
-    return userService.getLoggedinUser()
-        .then(user => {
-            store.dispatch({ type: SET_USER, user })
-        })
-        .catch(err => {
-            console.error('Failed to load logged-in user:', err)
-        })
+async function loadLoggedInUser() {
+    try {
+        const user = await userService.getLoggedinUser()
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.error('Failed to load logged-in user:', err)
+    }
 }
 
-function loadUsers() {
-    return userService.query()
-        .then(users => {
-            store.dispatch({ type: SET_USERS, users })
-        })
-        .catch(err => {
-            console.error('Failed to load user list:', err)
-        })
+async function loadUsers() {
+    try {
+        const users = await userService.query()
+        store.dispatch({ type: SET_USERS, users })
+    } catch (err) {
+        console.error('Failed to load user list:', err)
+        throw err
+    }
 }
 
-function loginUser(credentials) {
-    return userService.login(credentials)
-        .then(user => {
-            store.dispatch({ type: SET_USER, user })
-        })
-        .catch(err => {
-            console.error('Failed to load logged-in user:', err)
-        })
+async function loginUser(credentials) {
+    try {
+        const user = await userService.login(credentials)
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.error('Failed to load logged-in user:', err)
+        throw err
+    }
 }
 
-function signupUser(credentials) {
-    return userService.signup(credentials)
-        .then(user => {
-            store.dispatch({ type: SET_USER, user })
-        })
-        .catch(err => {
-            console.error('Failed to signup user:', err)
-        })
+async function signupUser(credentials) {
+    try {
+        const user = await userService.signup(credentials)
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.error('Failed to signup user:', err)
+        throw err
+    }
 }
 
-function logoutUser() {
-    return userService.logout()
-        .then(() => {
-            store.dispatch({ type: SET_USER, user: null })
-        })
-        .catch(err => {
-            console.error('Failed to logout:', err)
-        })
+async function logoutUser() {
+    try {
+        await userService.logout()
+        store.dispatch({ type: SET_USER, user: null })
+    } catch (err) {
+        console.error('Failed to logout:', err)
+        throw err
+    }
 }
 
-function updateUser(user) {
-    return userService.updateUser(user)
-        .then((user) => {
-            store.dispatch({ type: SET_USER, user })
-        })
-        .catch(err => {
-            console.log('Cannot update user', err)
-            throw err
-        })
+async function updateUser(userToUpdate) {
+    try {
+        const user = await userService.updateUser(userToUpdate)
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.log('Cannot update user', err)
+        throw err
+    }
 }
 
-function removeUser(userID) {
-    return userService.remove(userID)
-        .then(() => {
-            store.dispatch({ type: REMOVE_USER, userID })
-        })
-        .catch(err => {
-            console.log('Cannot remove user:', err)
-            throw err
-        })
+async function removeUser(userID) {
+    try {
+        await userService.remove(userID)
+        store.dispatch({ type: REMOVE_USER, userID })
+    } catch (err) {
+        console.log('Cannot remove user:', err)
+        throw err
+    }
 }

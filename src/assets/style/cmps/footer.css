@@ -1,0 +1,12 @@
+footer {
+    padding-block-start: 0.1em;
+
+    background-color: hsl(105, 24%, 77%);
+    border-block-start: 2px solid hsl(0, 0%, 85%);
+}
+
+footer>p:first-of-type {
+    margin: 0;
+
+    font-size: 1.25em;
+}

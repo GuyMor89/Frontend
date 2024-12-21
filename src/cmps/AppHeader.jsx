@@ -21,12 +21,13 @@ export function AppHeader() {
 		<header className='header'>
 			<nav>
 				<NavLink to="/">Home</NavLink>
-				<NavLink to="/bug">Bugs</NavLink>
+				<NavLink to="/toy">Toys</NavLink>
 				{user && user.isAdmin && <NavLink to="/users">Users</NavLink>}
+				<NavLink to="/dashboard">Dashboard</NavLink>
 				<NavLink to="/about">About</NavLink>
 			</nav>
 			{user ? (
-				<section>
+				<section className='logged-in'>
 					<Link to={`/user/${user._id}`}>Hello {user.fullname}</Link>
 					<button onClick={onLogout}>Logout</button>
 				</section>

@@ -1,0 +1,129 @@
+.main-container {
+        width: 100%;
+        height: 100%;
+}
+
+.info-actions {
+    margin: 1em;
+
+    width: 75%;
+
+    >fieldset {
+        position: relative;
+
+        padding: 0.5em 0.5em;
+        padding-block-start: 1em;
+
+        width: 560px;
+
+        border-radius: 5px;
+
+        >legend {
+            position: absolute;
+            padding: 0 1em;
+
+            left: 10%;
+            top: -0.66em;
+
+            font-size: 1.2em;
+            font-weight: 500;
+
+            background-color: white;
+        }
+
+        >input {
+            padding-inline-start: 0.5em;
+
+            height: 30px;
+            border-radius: 3px;
+            border: 2px solid hsl(0, 0%, 75%);
+
+            font-family: Roboto;
+            font-weight: 500;
+
+            outline: none;
+        }
+
+        >label {
+            margin-inline: 1em;
+            margin-inline-end: 0.5em;
+
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        button {
+            margin-inline-start: 2em;
+        }
+    }
+}
+
+.MuiSlider-root {
+    margin: 0 1em;
+}
+
+.toy-list-counter {
+    font-size: 1.5em;
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
+
+    height: fit-content;
+
+    >div {
+        padding: 0.5em 0.5em;
+        margin-inline-end: 1em;
+
+        height: fit-content;
+
+        background-color: hsl(0, 0%, 93%);
+        border-radius: 100px;
+        border: 1px solid hsl(0, 0%, 100%);
+
+        font-size: 0.6em;
+
+        transition: border 200ms;
+
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid hsl(0, 0%, 35%);
+        }
+    }
+}
+
+.pagination {
+    margin-block: 0.5em;
+
+    font-size: 1.15em;
+
+    >span {
+        margin-inline-end: 1em;
+    
+        width: 120px;
+    }
+
+    >i {
+        padding: 0.5em;
+    
+        width: 37px;
+    
+        text-align: center;
+        border-radius: 9999px;
+    
+        cursor: pointer;
+    
+        transition: background-color 200ms;
+
+        &:hover {
+            background-color: hsl(0, 0%, 93%);
+        }
+
+        &.faint,
+        &.faint:hover {
+            cursor: auto;
+            color: hsl(0, 0%, 75%);
+            background-color: white;
+            pointer-events: none;
+        }
+    }
+}

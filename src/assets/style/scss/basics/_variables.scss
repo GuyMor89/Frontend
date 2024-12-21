@@ -1,0 +1,4 @@
+@use "sass:color";
+
+$button-color: hsl(32, 88%, 96%);
+$button-color-hover: color.adjust($button-color, $lightness: 2%)
