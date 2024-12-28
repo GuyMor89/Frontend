@@ -4,20 +4,12 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { userActions } from '../store/actions/user.actions.js'
 
+import { Formik, Form, Field } from 'formik'
+import * as Yup from 'yup'
+
 export function LoginSignup() {
 
     const [isSignup, setIsSignUp] = useState(false)
-    const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
-
-    function handleChange({ target }) {
-        const { name: field, value } = target
-        setCredentials(prevCreds => ({ ...prevCreds, [field]: value }))
-    }
-
-    function handleSubmit(ev) {
-        ev.preventDefault()
-        isSignup ? signup(credentials) : login(credentials)
-    }
 
     async function login(credentials) {
         try {
@@ -37,46 +29,72 @@ export function LoginSignup() {
         }
     }
 
+    const validationSchema = Yup.object({
+        username: Yup.string()
+            .required('Username is required')
+            .min(3, 'At least 3 characters'),
+        password: Yup.string()
+            .required('Password is required')
+            .min(5, 'At least 5 characters'),
+        fullname: isSignup
+            ? Yup.string().required('Full name is required')
+            : Yup.mixed().notRequired()
+    })
+
+    function addFormikField(errors, touched, options) {
+        const { fieldName, type, placeholder, focus } = options
+
+        return (
+            <div
+                className={errors[fieldName] && touched[fieldName] ? 'error-input' : ''}
+                data-error={errors[fieldName] && touched[fieldName] ? errors[fieldName] : ''}
+            >
+                <Field
+                    type={type}
+                    name={fieldName}
+                    placeholder={placeholder}
+                    required
+                    autoFocus={focus === 'autoFocus'}
+                />
+            </div>
+        )
+    }
+
     return (
         <div className="login-page">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    value={credentials.username}
-                    placeholder="Username"
-                    onChange={handleChange}
-                    required
-                    autoFocus
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={credentials.password}
-                    placeholder="Password"
-                    onChange={handleChange}
-                    required
-                    autoComplete="off"
-                />
-                {isSignup && <input
-                    type="text"
-                    name="fullname"
-                    value={credentials.fullname}
-                    placeholder="Full name"
-                    onChange={handleChange}
-                    required
-                />}
-                <button>{isSignup ? 'Signup' : 'Login'}</button>
-            </form>
+            <Formik
+                initialValues={{
+                    username: '',
+                    password: '',
+                    fullname: isSignup ? '' : undefined
+                }}
+                validationSchema={validationSchema}
+                onSubmit={(values) => {
+                    isSignup ? signup(values) : login(values)
+                }}
+            >
+                {({ errors, touched }) => (
+                    <Form>
+                        {addFormikField(errors, touched, { fieldName: 'username', type: 'text', placeholder: 'Username', focus: 'autoFocus' })}
+                        {addFormikField(errors, touched, { fieldName: 'password', type: 'text', placeholder: 'Password', focus: 'none' })}
 
-            <div className="btns">
-                <a href="#" onClick={() => setIsSignUp(!isSignup)}>
-                    {isSignup ?
-                        'Already a member? Login' :
-                        'New user? Signup here'
-                    }
-                </a >
-            </div>
+                        {isSignup && (
+                        addFormikField(errors, touched, { fieldName: 'fullname', type: 'text', placeholder: 'Full name', focus: 'none' })
+                        )}
+
+                        <button>{isSignup ? 'Signup' : 'Login'}</button>
+
+                        <section className="btns">
+                            <a href="#" onClick={() => setIsSignUp(!isSignup)}>
+                                {isSignup ?
+                                    'Already a member? Login' :
+                                    'New user? Signup here'
+                                }
+                            </a >
+                        </section>
+                    </Form>
+                )}
+            </Formik>
         </div >
     )
 }

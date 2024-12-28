@@ -70,7 +70,8 @@
     }
 }
 
-.toy-msgs {
+.toy-msgs,
+.toy-reviews {
 
     h4 {
         margin: 0.5em;
@@ -86,7 +87,8 @@
         height: 30px;
     }
 
-    .toy-msg {
+    .toy-msg,
+    .toy-review {
         padding: 0.25em 0.5em;
 
         width: 75%;
@@ -105,11 +107,13 @@
         }
     }
 
-    .toy-msg:nth-of-type(1n) {
+    .toy-msg:nth-of-type(1n),
+    .toy-review:nth-of-type(1n) {
         background-color: hsl(0, 0%, 90%);
     }
 
-    .toy-msg:nth-of-type(2n) {
+    .toy-msg:nth-of-type(2n),
+    .toy-review:nth-of-type(2n) {
         background-color: hsl(0, 0%, 100%);
     }
 }

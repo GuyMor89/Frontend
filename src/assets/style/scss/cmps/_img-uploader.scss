@@ -1,0 +1,28 @@
+.userImg {
+    position: relative;
+
+    img {
+        height: 100px;
+    }
+
+    &::after {
+        content: '';
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 105px;
+        height: 100px;
+        background-color: hsla(0, 0%, 50%, 0.491);
+        border-radius: 10px;
+        pointer-events: none
+    }
+
+    &.drag {
+        position: relative;
+
+        &::after {
+            display: block;
+        }
+    }
+}

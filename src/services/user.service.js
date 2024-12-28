@@ -1,5 +1,6 @@
 import { httpService } from "./http.service.js"
 
+const STORAGE_KEY_LOGGEDIN_USER = 'user'
 const BASE_URL = 'users/'
 
 export const userService = {
@@ -8,6 +9,7 @@ export const userService = {
     logout,
     getLoggedinUser,
     remove,
+    update,
     query,
     getById,
     getEmptyCredentials
@@ -17,21 +19,33 @@ function query() {
     return httpService.get('users')
 }
 
-function login({ username, password }) {
-    return httpService.post('auth/login', { username, password })
+async function login({ username, password }) {
+    try {
+        const user = await httpService.post('auth/login', { username, password })
+        _setLoggedinUser(user)
+        return user
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function signup({ username, password, fullname }) {
-    return httpService.post('auth/signup', { username, password, fullname })
+async function signup({ username, password, fullname }) {
+    try {
+        const user = await httpService.post('auth/signup', { username, password, fullname })
+        _setLoggedinUser(user)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function logout() {
-    return httpService.post('auth/logout')
+async function logout() {
+    await httpService.post('auth/logout')
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
 function getLoggedinUser() {
-    // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    return httpService.get('auth/verify')
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    // return httpService.get('auth/verify')
 }
 
 function getById(userId) {
@@ -39,7 +53,16 @@ function getById(userId) {
 }
 
 function remove(userId) {
-    return httpService.delete('userS/' + userId)
+    return httpService.delete('users/' + userId)
+}
+
+async function update(userToUpdate) {
+    try {
+        const user = await httpService.put('users/' + userToUpdate._id, userToUpdate)
+        _setLoggedinUser(user)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 function getEmptyCredentials() {

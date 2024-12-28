@@ -13,14 +13,15 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { NotFound } from './pages/NotFound.jsx'
 import { Dashboard } from './pages/Dashboard.jsx'
 import { About } from './pages/About.jsx'
-import { Modal } from './cmps/modal.jsx'
+import { InputModal } from './cmps/InputModal.jsx'
+import { Reviews } from './pages/Reviews.jsx'
 
 export function App() {
     return (
         <Provider store={store}>
             <Router>
                 <UserMsg />
-                <Modal />
+                <InputModal />
                 <div className='main-app'>
                     <AppHeader />
                     <main className='main-container'>
@@ -30,6 +31,7 @@ export function App() {
                             <Route path="/toy/:toyId" element={<ToyDetails />} />
                             <Route path="/users" element={<UserList />} />
                             <Route path="/user/:userID" element={<UserDetails />} />
+                            <Route path="reviews" element={<Reviews />} />
                             <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/about" element={<About />} />
                             <Route path="*" element={<NotFound />} />

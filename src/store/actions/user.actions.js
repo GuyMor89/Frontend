@@ -15,7 +15,7 @@ export const userActions = {
 async function loadLoggedInUser() {
     try {
         const user = await userService.getLoggedinUser()
-        store.dispatch({ type: SET_USER, user })
+        if (user) store.dispatch({ type: SET_USER, user })
     } catch (err) {
         console.error('Failed to load logged-in user:', err)
     }
@@ -63,7 +63,7 @@ async function logoutUser() {
 
 async function updateUser(userToUpdate) {
     try {
-        const user = await userService.updateUser(userToUpdate)
+        const user = await userService.update(userToUpdate)
         store.dispatch({ type: SET_USER, user })
     } catch (err) {
         console.log('Cannot update user', err)

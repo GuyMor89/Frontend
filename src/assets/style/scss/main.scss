@@ -12,8 +12,11 @@
 @use 'pages/toy-details';
 @use 'pages/toy-index';
 @use 'pages/user-details';
+@use 'pages/reviews';
 
 @use 'cmps/footer';
 @use 'cmps/header';
 @use 'cmps/toy-list';
 @use 'cmps/user-msg';
+@use 'cmps/toy-filter';
+@use 'cmps/img-uploader';

@@ -3,18 +3,15 @@ import { useSelector } from 'react-redux'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userActions } from '../store/actions/user.actions.js'
+import { ImgUploader } from '../cmps/ImgUploader.jsx'
 
 export function UserList() {
 
     const users = useSelector(storeState => storeState.userModule.users)
 
     useEffect(() => {
-        getUsers()
-    }, [])
-
-    function getUsers() {
         userActions.loadUsers()
-    }
+    }, [])
 
     function deleteUser(userID) {
         try {
@@ -25,17 +22,25 @@ export function UserList() {
         }
     }
 
-    if (!users) return <div>Loading..</div>
+    function addAvatar(userID, imgURL) {
+        const user = users.find(user => user._id === userID)
+        user.imgURL = imgURL
+        userActions.updateUser(user)
+    }
+
+    if (!users) return <div className='loader-big'></div>
 
     return (
-        <section className='user-list'>
-            {users.map(user => {
-                return <div key={user._id}>
-                    <h3>{user.fullname}</h3>
-                    {/* <h4>{user._id}</h4> */}
-                    <button onClick={() => deleteUser(user._id)}>Delete</button>
-                </div>
-            })}
-        </section>
+        <>
+            <section className='user-list'>
+                {users.map(user => {
+                    return <div key={user._id}>
+                        <h3>{user.fullname}</h3>
+                        <ImgUploader user={user} addAvatar={addAvatar} />
+                        <button onClick={() => deleteUser(user._id)}>Delete</button>
+                    </div>
+                })}
+            </section>
+        </>
     )
 }

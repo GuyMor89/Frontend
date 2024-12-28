@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { ToyFilter } from '../cmps/ToyFilter.jsx'
 
 
 export function ToyIndex() {
@@ -20,28 +21,12 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
 
-    const debouncedSetFilterRef = useRef(utilService.debounce(handleInputs, 500))
-
     useEffect(() => {
         loadToys()
     }, [filterBy])
 
     function loadToys() {
         toyActions.loadToys(filterBy)
-    }
-
-    function handleInputs(event) {
-        let keyword = ''
-        let minPrice = ''
-
-        if (event.target.name === 'search') {
-            keyword = event.target.value
-            dispatch({ type: CHANGE_FILTER_BY, filterBy: { name: keyword } })
-        }
-        if (event.target.name === 'min-price') {
-            minPrice = event.target.value
-            dispatch({ type: CHANGE_FILTER_BY, filterBy: { minPrice } })
-        }
     }
 
     function sortToys(event) {
@@ -74,17 +59,7 @@ export function ToyIndex() {
 
     return (
         <>
-            <section className='info-actions'>
-                <fieldset>
-                    <legend>Filter</legend>
-                    <input onChange={debouncedSetFilterRef.current} type='search' name='search' placeholder='Search toys..'></input>
-                    <label htmlFor="min-price"> Min Price</label>
-                    <Box sx={{ width: 150 }}>
-                        <Slider onChange={debouncedSetFilterRef.current} defaultValue={filterBy.minPrice} name='min-price' aria-label="Default" valueLabelDisplay="auto" />
-                    </Box>
-                    {user && <button className='add-button' onClick={() => { dispatch({ type: SET_MODAL, modal: { open: true, type: 'add', toy: null } }) }}><FontAwesomeIcon style={{ fontSize: '2em' }} icon={faPlus} /></button>}
-                </fieldset>
-            </section>
+            <ToyFilter />
             <div className="toy-list-counter">
                 <div id={'price'} onClick={sortToys}>
                     <i className={price === '' || price === -1 ? "fa-solid fa-chevron-up" : "fa-solid fa-chevron-down"}></i>

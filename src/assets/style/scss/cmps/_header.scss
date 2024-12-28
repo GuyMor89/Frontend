@@ -7,7 +7,7 @@ header {
     >h1 {
         margin: 0.5em;
         margin-block: 0.25em;
-    
+
         font-family: Open Sans;
         font-size: 2em;
     }
@@ -15,30 +15,58 @@ header {
     >div {
         margin: 0.5em 0;
         text-align: center;
+        position: relative;
 
-        >.btns>a {
-            @include aStyle()
-        }
+
 
         >form {
             height: 100%;
+            position: relative;
 
-            >input {
-                padding: 0.35em 0.5em;
-                background-color: hsl(0, 0%, 100%);
-                border-radius: 3px;
-                border: 2px solid hsl(0, 0%, 60%);
+            >.btns>a {
+                @include aStyle();
+                font-size: 1em;
+            }
 
-                font-family: Roboto;
-                font-weight: 500;
+            >div {
+                position: relative;
 
-                outline: none;
+                >input {
+                    padding: 0.35em 0.5em;
+                    background-color: hsl(0, 0%, 100%);
+                    border-radius: 3px;
+                    border: 2px solid hsl(0, 0%, 60%);
+
+                    font-family: Roboto;
+                    font-weight: 500;
+
+                    outline: none;
+                }
+
+                &.error-input {
+                    >input {
+                        border-color: red;
+                    }
+                }
+
+                &::after {
+                    content: attr(data-error);
+                    color: red;
+                    font-size: 14px;
+                    position: absolute;
+                    top: -75%;
+                    left: 10%;
+                    margin-top: 4px;
+                }
             }
 
             button {
                 margin-inline-start: 0.5em;
                 margin-inline-end: 1em;
             }
+
+
+
         }
     }
 
@@ -48,8 +76,19 @@ header {
         >a {
             text-decoration: none;
             color: black;
-        
+
             font-size: 1.25em;
+            border-block-end: 2px solid transparent;
+
+            transition: border 200ms;
+
+            >span {
+                font-weight: 500;
+            }
+
+            &:hover {
+                border-block-end: 2px solid black;
+            }
         }
 
         >button {
@@ -73,4 +112,3 @@ nav {
 main {
     text-align: center;
 }
-

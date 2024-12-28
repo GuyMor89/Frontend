@@ -137,7 +137,8 @@ main {
     justify-self: center;
 }
 
-.toy-msg {
+.toy-msg,
+.toy-reviews {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr;
