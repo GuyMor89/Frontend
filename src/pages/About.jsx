@@ -58,7 +58,7 @@ export function About() {
             </div>
 
             <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyAidkPm4wJUPqkrTvMJf9zRE5Bnt9fDo5w" }}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                 center={currLocation}
                 zoom={currZoom}
             >

@@ -1,8 +1,9 @@
-export const SET_USER = 'SET_USER'
+export const SET_LOGGEDIN_USER = 'SET_LOGGEDIN_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_ACTIVITIES = 'SET_ACTIVITIES'
 export const SET_BALANCE = 'SET_BALANCE'
 export const REMOVE_USER = 'REMOVE_USER'
+export const UPDATE_USER = 'UPDATE_USER'
 
 const initialState = {
     userActivities: [],
@@ -13,7 +14,7 @@ const initialState = {
 export function userReducer(state = initialState, action) {
     switch (action.type) {
 
-        case SET_USER:
+        case SET_LOGGEDIN_USER:
             return {
                 ...state,
                 loggedInUser: action.user
@@ -22,6 +23,11 @@ export function userReducer(state = initialState, action) {
             return {
                 ...state,
                 users: action.users
+            }
+        case UPDATE_USER:
+            return {
+                ...state,
+                users: state.users.map(user => user._id === action.user._id ? action.user : user)
             }
         case REMOVE_USER:
             return {

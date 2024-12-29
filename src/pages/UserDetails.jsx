@@ -6,11 +6,12 @@ import { userActions } from '../store/actions/user.actions.js'
 import { toyActions } from '../store/actions/toy.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { useNavigate } from 'react-router-dom'
+import { ImgUploader } from '../cmps/ImgUploader.jsx'
 
 export function UserDetails() {
 
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
-    const toys = useSelector(storeState => storeState.toyModule.unfilteredToys?.filter(toy => toy.owner && toy.owner.fullname === user.fullname))
+    const toys = useSelector(storeState => storeState.toyModule.unfilteredToys?.filter(toy => toy.owner && toy.owner.fullname === user?.fullname))
 
     const navigate = useNavigate()
 
@@ -32,14 +33,19 @@ export function UserDetails() {
         }
     }
 
+    function addAvatar(userID, imgURL) {
+        user.imgURL = imgURL
+        userActions.updateUser(user)
+    }
+
     if (!user) return navigate('/')
 
-    const { _id, fullname, isAdmin } = user
+    const { fullname, isAdmin } = user
 
     return (
         <div className='user-details'>
             <h2>Name: {fullname}</h2>
-            <h3>ID: {_id}</h3>
+            <ImgUploader user={user} addAvatar={addAvatar} />
             <h3>Is Admin: {isAdmin ? 'Yes' : 'No'}</h3>
             {toys && toys.length > 0 ? <ToyList toys={toys} user={user} /> : 'You don\'t own any toys'}
         </div>

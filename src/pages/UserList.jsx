@@ -7,6 +7,7 @@ import { ImgUploader } from '../cmps/ImgUploader.jsx'
 
 export function UserList() {
 
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const users = useSelector(storeState => storeState.userModule.users)
 
     useEffect(() => {
@@ -25,9 +26,11 @@ export function UserList() {
     function addAvatar(userID, imgURL) {
         const user = users.find(user => user._id === userID)
         user.imgURL = imgURL
+        console.log(user)
         userActions.updateUser(user)
     }
 
+    if (!user?.isAdmin) return <div className='not-allowed'>You are not allowed to be here!</div>
     if (!users) return <div className='loader-big'></div>
 
     return (

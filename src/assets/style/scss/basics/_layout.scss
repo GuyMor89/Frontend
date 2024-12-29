@@ -173,7 +173,7 @@
     >div {
         @include grid($place: center);
 
-        grid-template-rows: 1fr 100px 1fr;
+        // grid-template-rows: 1fr 100px 1fr;
         gap: 1em;
     }
 }

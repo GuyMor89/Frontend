@@ -59,7 +59,9 @@ function remove(userId) {
 async function update(userToUpdate) {
     try {
         const user = await httpService.put('users/' + userToUpdate._id, userToUpdate)
-        _setLoggedinUser(user)
+        const loggedInUser = getLoggedinUser()
+        if (user._id === loggedInUser._id) _setLoggedinUser(user)
+        return user
     } catch (err) {
         console.log(err)
     }
@@ -74,7 +76,7 @@ function getEmptyCredentials() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, isAdmin: user.isAdmin }
+    const userToSave = { _id: user._id, username: user.username, fullname: user.fullname, isAdmin: user.isAdmin, imgURL: user.imgURL }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
     return userToSave
 }

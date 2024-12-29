@@ -1,5 +1,5 @@
 import { userService } from "../../services/user.service.js"
-import { REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer.js"
+import { REMOVE_USER, SET_LOGGEDIN_USER, SET_USERS, UPDATE_USER } from "../reducers/user.reducer.js"
 import { store } from "../store.js"
 
 export const userActions = {
@@ -15,7 +15,7 @@ export const userActions = {
 async function loadLoggedInUser() {
     try {
         const user = await userService.getLoggedinUser()
-        if (user) store.dispatch({ type: SET_USER, user })
+        if (user) store.dispatch({ type: SET_LOGGEDIN_USER, user })
     } catch (err) {
         console.error('Failed to load logged-in user:', err)
     }
@@ -34,7 +34,7 @@ async function loadUsers() {
 async function loginUser(credentials) {
     try {
         const user = await userService.login(credentials)
-        store.dispatch({ type: SET_USER, user })
+        store.dispatch({ type: SET_LOGGEDIN_USER, user })
     } catch (err) {
         console.error('Failed to load logged-in user:', err)
         throw err
@@ -44,7 +44,7 @@ async function loginUser(credentials) {
 async function signupUser(credentials) {
     try {
         const user = await userService.signup(credentials)
-        store.dispatch({ type: SET_USER, user })
+        store.dispatch({ type: SET_LOGGEDIN_USER, user })
     } catch (err) {
         console.error('Failed to signup user:', err)
         throw err
@@ -54,7 +54,7 @@ async function signupUser(credentials) {
 async function logoutUser() {
     try {
         await userService.logout()
-        store.dispatch({ type: SET_USER, user: null })
+        store.dispatch({ type: SET_LOGGEDIN_USER, user: null })
     } catch (err) {
         console.error('Failed to logout:', err)
         throw err
@@ -64,7 +64,8 @@ async function logoutUser() {
 async function updateUser(userToUpdate) {
     try {
         const user = await userService.update(userToUpdate)
-        store.dispatch({ type: SET_USER, user })
+        console.log(user)
+        store.dispatch({ type: UPDATE_USER, user })
     } catch (err) {
         console.log('Cannot update user', err)
         throw err
