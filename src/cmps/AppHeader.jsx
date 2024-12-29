@@ -10,6 +10,7 @@ export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.loggedInUser)
 	const [isLoading, setIsLoading] = useState(true)
 
+	console.log(user)
 	useEffect(() => {
 		verifyUser()
 	}, [])

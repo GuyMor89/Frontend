@@ -33,6 +33,7 @@ async function signup({ username, password, fullname }) {
     try {
         const user = await httpService.post('auth/signup', { username, password, fullname })
         _setLoggedinUser(user)
+        return user
     } catch (err) {
         console.log(err)
     }
