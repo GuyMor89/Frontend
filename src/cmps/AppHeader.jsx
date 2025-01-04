@@ -10,7 +10,6 @@ export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.loggedInUser)
 	const [isLoading, setIsLoading] = useState(true)
 
-	console.log(user)
 	useEffect(() => {
 		verifyUser()
 	}, [])
@@ -48,6 +47,7 @@ export function AppHeader() {
 				{user && user.isAdmin && <NavLink to="/users">Users</NavLink>}
 				<NavLink to="/reviews">Reviews</NavLink>
 				<NavLink to="/dashboard">Dashboard</NavLink>
+				<NavLink to="/chat">Chat</NavLink>
 				<NavLink to="/about">About</NavLink>
 			</nav>
 			{handleLoading()}

@@ -34,7 +34,6 @@ async function getFullReviews() {
 async function addReview(toyID, review) {
     try {
         const savedReview = await reviewService.save(toyID, review)
-        console.log(savedReview)
         store.dispatch({ type: ADD_REVIEW, savedReview })
         return savedReview
     } catch (err) {

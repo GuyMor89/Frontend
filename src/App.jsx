@@ -15,6 +15,7 @@ import { Dashboard } from './pages/Dashboard.jsx'
 import { About } from './pages/About.jsx'
 import { InputModal } from './cmps/InputModal.jsx'
 import { Reviews } from './pages/Reviews.jsx'
+import { Chat } from './pages/Chat.jsx'
 
 export function App() {
     return (
@@ -33,6 +34,7 @@ export function App() {
                             <Route path="/user/:userID" element={<UserDetails />} />
                             <Route path="reviews" element={<Reviews />} />
                             <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="chat" element={<Chat />} />
                             <Route path="/about" element={<About />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>

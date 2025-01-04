@@ -9,12 +9,15 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export function Dashboard() {
 
     const toys = useSelector(storeState => storeState.toyModule.unfilteredToys)
-    const [chartData, setChartData] = useState(howManyInStock())
-
+    const [chartData, setChartData] = useState(toys ? howManyInStock() : null)
+    
     useEffect(() => {
+        console.log('hi')
         toyActions.loadToys()
     }, [])
+    console.log(toys)
 
+    
     function changeChart(type) {
         if (type === 'toys in stock') return setChartData(howManyInStock())
         if (type === 'toys per label') return setChartData(howManyPerLabel())
@@ -47,11 +50,11 @@ export function Dashboard() {
     }
 
     const data = {
-        labels: chartData.labels,
+        labels: chartData?.labels,
         datasets: [
             {
                 label: '# of Toys',
-                data: chartData.amount,
+                data: chartData?.amount,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -72,6 +75,7 @@ export function Dashboard() {
             },
         ],
     }
+
 
     return (
         <div className='chart'>

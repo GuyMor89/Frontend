@@ -5,15 +5,17 @@ import { ToyList } from '../cmps/ToyList.jsx'
 import { userActions } from '../store/actions/user.actions.js'
 import { toyActions } from '../store/actions/toy.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ImgUploader } from '../cmps/ImgUploader.jsx'
+import { UPDATE_USER } from '../store/reducers/user.reducer.js'
 
 export function UserDetails() {
 
+    const params = useParams()
+    const navigate = useNavigate()
+
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const toys = useSelector(storeState => storeState.toyModule.unfilteredToys?.filter(toy => toy.owner && toy.owner.fullname === user?.fullname))
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         userActions.loadLoggedInUser()
@@ -23,6 +25,22 @@ export function UserDetails() {
     useEffect(() => {
         loadToys()
     }, [user])
+
+    useEffect(() => {
+
+        socketService.emit('watch-current-user', user?._id)
+        socketService.on('user-updated', onUserUpdate)
+
+        return () => {
+            socketService.off('user-updated', onUserUpdate)
+        }
+
+    }, [params.id])
+
+    function onUserUpdate(user) {
+        showSuccessMsg(`This user ${user.fullname} just got updated from socket.`)
+        store.dispatch({ type: UPDATE_USER, user })
+    }
 
     async function loadToys() {
         if (!user) return
